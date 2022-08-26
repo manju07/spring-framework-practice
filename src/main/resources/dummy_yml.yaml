@@ -1,0 +1,10 @@
+# spring.main.lazy-initialization=true
+
+# spring:
+#     profiles:
+#         active: dev
+# name: manjunath
+
+# logging:
+#     file:
+#         path: log

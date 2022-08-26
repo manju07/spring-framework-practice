@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- Creating instances -->
+    <!-- instantiate bean by constructor -->
+    <bean id="sampleObj" class="spring.framework.practice.model.Sample">
+    </bean>
+    
+    <!-- instantiate bean by calling static factory method -->
+    <bean id="sampleObjByStaticFactoryMethod" class="spring.framework.practice.model.Sample" factory-method="createInstance">
+    </bean>
+
+    <!-- instantiate bean by calling factory method -->
+    <bean id="sampleObjByFactoryMethod" class="spring.framework.practice.model.Sample" factory-bean="sampleObjByStaticFactoryMethod" factory-method="createInstanceByFactoryMethod">
+    </bean>
+
+
+     <!-- alias beans -->
+    <alias name="sampleObj" alias="sampleObj2"/>
+
+    <!-- setter based DI -->
+    <bean id="sampleObj3" class="spring.framework.practice.model.Sample">
+        <property name="d1" ref="d1"/>
+        <property name="d2" ref="d2"/>
+    </bean>
+
+    <!-- constructor based DI -->
+    <bean id="sampleObj4" class="spring.framework.practice.model.Sample">
+        <constructor-arg ref="d1"/>
+        <constructor-arg ref="d2"/>
+    </bean>
+
+    <bean id="sampleObjWithNameAndSalaryBasedOnType" class="spring.framework.practice.model.Sample">
+        <constructor-arg type="java.lang.String" value="Manjunath Asundi"/>
+        <constructor-arg type="double" value="100000.0D"/>
+    </bean>
+
+    <bean id="sampleObjWithNameAndSalaryBasedOnIndex" class="spring.framework.practice.model.Sample">
+        <constructor-arg index="1" type="double" value="100000.0D"/>
+        <constructor-arg index="0" type="java.lang.String" value="Manjunath Asundi"/>
+    </bean>
+
+    <bean id="sampleObjWithNameAndSalaryBasedOnName" class="spring.framework.practice.model.Sample">
+        <constructor-arg name="salary" value="100000.0D"/>
+        <constructor-arg name="name"  value="Manjunath Asundi"/>
+    </bean>
+</beans>
